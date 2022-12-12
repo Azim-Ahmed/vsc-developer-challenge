@@ -1,45 +1,59 @@
+
 {
-  "name": "vsc-currency",
-  "displayName": "vsc-currency",
-  "description": "",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.0.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:vsc-currency.helloWorld"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "vsc-currency.helloWorld",
-        "title": "Hello World"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.74.0",
-    "@types/glob": "^8.0.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "eslint": "^8.28.0",
-    "glob": "^8.0.3",
-    "mocha": "^10.1.0",
-    "typescript": "^4.9.3",
-    "@vscode/test-electron": "^2.2.0"
+	"name": "vsc-currency",
+	"displayName": "vsc-currency",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+	  "vscode": "^1.0.0"
+	},
+	"main": "./dist/extension",
+	"categories": [
+	  "Other"
+	],
+	"activationEvents": [
+		"toolkitTest.openWebview"
+	  ],
+	"contributes": {
+		"commands": [
+		  {
+			"command": "toolkitTest.openWebview",
+			"title": "Open Test Webview",
+			"category": "UI Toolkit Test"
+		  }
+		]
+	  },
+
+	"scripts": {
+	"vscode:prepublish": "npm run compile",
+	"build": "rimraf dist && node ./scripts/build.js",
+    "pretest": "tsc -p . --outDir out && npm run build",
+    "test": "node ./out/test/runTests.js",
+    "watch": "tsc -w -p ./"
+	},
+	"devDependencies": {
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^14.4.3",
+		"@types/mocha": "^10.0.0",
+		"@types/node": "^18.8.5",
+		"@types/react": "^18.0.21",
+		"@types/react-dom": "^18.0.6",
+		"@types/vscode": "^1.72.0",
+		"@types/yargs": "^17.0.13",
+		"@vscode/test-electron": "^2.1.5",
+		"esbuild": "^0.15.10",
+		"global-jsdom": "^8.6.0",
+		"globby": "^11.1.0",
+		"jsdom": "^20.0.1",
+		"mocha": "^10.0.0",
+		"rimraf": "^3.0.2",
+		"typescript": "^4.8.4",
+		"vscode-test": "^1.6.1",
+		"yargs": "^17.6.0"
+	  },
+	  "dependencies": {
+		"@vscode/webview-ui-toolkit": "^1.2.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	  }
   }
-}
