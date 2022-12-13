@@ -13,7 +13,6 @@ export function activate(context: vscode.ExtensionContext) {
       const scriptUri = panel.webview.asWebviewUri(
         vscode.Uri.joinPath(webviewRoot, "test.js")
       );
-
       panel.webview.html = getHtml(
         panel.webview.cspSource,
         scriptUri.toString()
@@ -21,7 +20,6 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 }
-
 function getHtml(cspSrc: string, scriptSrc: string) {
   return `
   <!DOCTYPE html>
