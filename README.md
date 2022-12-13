@@ -7,6 +7,7 @@
 
 #### then run this command
 ` npm run build` to build the extension and check the output as like as other way
+![Output](https://github.com/Azim-Ahmed/vsc-developer-challenge/blob/master/images/convert_currency.png)
 
 ## JS Developer Challenge
 
