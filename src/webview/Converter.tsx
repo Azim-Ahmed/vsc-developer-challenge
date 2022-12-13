@@ -3,7 +3,11 @@ import { currency } from '../assets';
 import Label from './components/Label';
 import Select from './components/Select';
 import TextField from './components/TextField';
-
+/**
+ *@function Converter.Tsx
+ *@author Azim
+ *
+ **/
 function Converter(): JSX.Element {
 
   const [firstSelectedItem, setFirstSelectedItem] = useState<string>("usd");

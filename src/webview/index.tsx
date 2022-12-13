@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Converter from "./Converter";
+/**
+ *@function renderApplication.Tsx
+ *@author Azim
+ *
+ **/
 function renderApplication() {
   const container = document.getElementById("container");
   if (container) {
