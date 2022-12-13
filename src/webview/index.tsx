@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import Counter from "./Counter";
-
 function renderApplication() {
   const container = document.getElementById("container");
   if (container) {
