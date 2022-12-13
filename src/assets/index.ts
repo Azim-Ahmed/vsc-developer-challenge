@@ -1,4 +1,4 @@
- export const currency = {
+ export const currency:any = {
     "usd": {
       "code": "USD",
       "alphaCode": "USD",

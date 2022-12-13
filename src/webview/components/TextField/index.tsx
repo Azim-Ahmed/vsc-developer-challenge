@@ -1,6 +1,9 @@
 import React from "react";
- const TextField = () => {
-    return  <input
+ const TextField = (props:any) => {
+    return <input
+       {
+       ...props
+       }
     style={{
     border:"0",
     borderBottom:"1px solid #555",
