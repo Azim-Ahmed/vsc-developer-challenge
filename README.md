@@ -1,3 +1,13 @@
+## Submitted JS-developer Convert Currency (vscode-Extension) Challenge
+
+#### Clone this repo
+` npm install` or
+`yarn` or
+`pnpm install`
+
+#### then run this command
+` npm run build` to build the extension and check the output as like as other way
+
 ## JS Developer Challenge
 
 We deeply value adaptability and a learning mindset for our engineering hires. We believe It helps to foster a culture of continuous improvement and innovation by challenging developers to think outside the box and come up with creative solutions to problems.
