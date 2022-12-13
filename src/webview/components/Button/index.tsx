@@ -1,5 +1,9 @@
 import React from "react";
-
+/**
+ *@function Button.Tsx
+ *@author Azim
+ *
+ **/
 const Button = ({ label }:any) => {
     return             <button
     style={{

@@ -4,7 +4,7 @@ import Label from './components/Label';
 import Select from './components/Select';
 import TextField from './components/TextField';
 
-function Counter(): JSX.Element {
+function Converter(): JSX.Element {
 
   const [firstSelectedItem, setFirstSelectedItem] = useState<string>("usd");
   const [secondSelectedItem, setSecondSelectedItem] = useState<string>("cad");
@@ -88,4 +88,4 @@ marginBottom:"25px",
   );
 }
 
-export default Counter;
+export default Converter;

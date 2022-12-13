@@ -1,5 +1,10 @@
 import React from "react";
 import { currency } from '../../../assets';
+/**
+ *@function Select.Tsx
+ *@author Azim
+ *
+ **/
  const Select = ({ defaultValue, currencySecondConverter, }:any) => {
     return   <select
         defaultValue={defaultValue }
