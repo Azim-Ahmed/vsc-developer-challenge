@@ -32,10 +32,18 @@ function Converter(): JSX.Element {
     const getFirstCurrency = currency[firstSelectedItem];
     const getSecondCurrency = currency[secondSelectedItem];
     const getValue = e.target.value;
+    const getName = e.target.name;
     if (getValue) {
-      setFirstInput(getValue)
-      let multiply = getFirstCurrency.rate*getValue*getSecondCurrency.inverseRate;
-      setSecondInput(multiply)
+      if (getName === "first") {
+        setFirstInput(getValue);
+        let multiply = getFirstCurrency.rate*getValue*getSecondCurrency.rate;
+        setSecondInput(multiply)
+      } else {
+        let multiply = getFirstCurrency.inverseRate*getValue*getSecondCurrency.inverseRate;
+        setFirstInput(multiply);
+        setSecondInput(getValue)
+
+      }
     } else {
       setFirstInput("")
       setSecondInput("")
@@ -69,10 +77,10 @@ position:"relative",
 marginBottom:"25px",
 
 }} className="input-container">
-<Label labelWording={"current"+ '\xa0\xa0\xa0\xa0\xa0'+"Currency"}/>
-       <TextField value={firstInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
+  <Label labelWording={firstSelectedItem + '\xa0'+ "Currency"} />
+  <TextField name="first"  value={firstInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
 </div>
-<Select defaultValue={"usd"} currencySecondConverter={currencyFirstConverter}/>
+<Select defaultValue={firstSelectedItem} currencySecondConverter={currencyFirstConverter}/>
 
      </div>
      <div style={{display:"flex", alignItems:"center"}}>
@@ -81,10 +89,10 @@ position:"relative",
 marginBottom:"25px",
 
 }} className="input-container">
-<Label labelWording="converted Currency"/>
-<TextField value={secondInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
+              <Label labelWording={secondSelectedItem + '\xa0' + "Currency"} />
+              <TextField name="second" value={secondInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
 </div>
-<Select defaultValue={"cad"} currencySecondConverter={currencySecondConverter}/>
+<Select defaultValue={secondSelectedItem} currencySecondConverter={currencySecondConverter}/>
      </div>
         </div>
   </div>

@@ -3,49 +3,60 @@ import { currency } from '../assets';
 import Label from './components/Label';
 import Select from './components/Select';
 import TextField from './components/TextField';
+/**
+ *@function Converter.Tsx
+ *@author Azim
+ *
+ **/
+function Converter(): JSX.Element {
 
-function Counter(): JSX.Element {
-
-  const [firstSelectedItem, setFirstSelectedItem] = useState("usd");
-  const [secondSelectedItem, setSecondSelectedItem] = useState("cad");
-  const [firstInput, setFirstInput] = useState("");
+  const [firstSelectedItem, setFirstSelectedItem] = useState<string>("usd");
+  const [secondSelectedItem, setSecondSelectedItem] = useState<string>("cad");
+  const [firstInput, setFirstInput] = useState<string | number>("");
   const [secondInput, setSecondInput] = useState<string | number>("");
+
+
   const currencyFirstConverter = (e:any) => {
     setFirstInput("")
     setSecondInput("")
     setFirstSelectedItem(e.target.value)
+
   }
   const currencySecondConverter = (e:any) => {
     setSecondInput("")
     setFirstInput("")
     setSecondSelectedItem(e.target.value);
   }
+
   const handleInputSelectedValue = (e:any) => {
     const getFirstCurrency = currency[firstSelectedItem];
     const getSecondCurrency = currency[secondSelectedItem];
     const getValue = e.target.value;
-    if (getValue) {
+    const getName = e.target.name;
+    if (getValue){
       setFirstInput(getValue)
-      let multiply = getFirstCurrency.rate*getValue*getSecondCurrency.inverseRate;
+      let multiply = getFirstCurrency.rate*getValue*getSecondCurrency.rate;
       setSecondInput(multiply)
+    } else {
+      setFirstInput("")
+      setSecondInput("")
     }
   }
 
-  const WrapperContainer:any = ({children}:any) => {
-  return  <div
-  style={{
-    display: 'flex',
-    minHeight: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }}
-  >
-{children}
-  </div>
-}
+  // else if (getName === "second" && getValue) {
+  //   setSecondInput(getValue)
+  //   let multiply = getFirstCurrency.rate*getValue*getSecondCurrency.inverseRate;
+  //   setFirstInput(multiply)
+  // }
 
   return (
-    <WrapperContainer
+    <div
+    style={{
+      display: 'flex',
+      minHeight: '100vh',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
     >
       <div
     style={{
@@ -57,7 +68,7 @@ function Counter(): JSX.Element {
       borderRadius:"3px",
       padding:"70px 100px",
   }}>
-      <h1>Currency Converter</h1>
+      <h1 style={{textAlign:"center", marginBottom:"20px", marginTop:"-40px"}}>Convert Currency </h1>
         <div>
         <div style={{display:"flex", alignItems:"center"}}>
             <div style={{
@@ -65,11 +76,11 @@ position:"relative",
 marginBottom:"25px",
 
 }} className="input-container">
-<Label labelWording="current Currency"/>
-       <TextField value={firstInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
+<Label labelWording={"current"+ '\xa0\xa0\xa0\xa0\xa0'+"Currency"}/>
+       <TextField name="first"  value={firstInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
 </div>
+<Select defaultValue={"usd"} currencySecondConverter={currencyFirstConverter}/>
 
-      <Select defaultValue={"usd"} currencySecondConverter={currencyFirstConverter}/>
      </div>
      <div style={{display:"flex", alignItems:"center"}}>
             <div style={{
@@ -77,15 +88,15 @@ position:"relative",
 marginBottom:"25px",
 
 }} className="input-container">
-<Label labelWording="current Currency"/>
-<TextField value={secondInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
+<Label labelWording="converted Currency"/>
+<TextField name="second" value={secondInput} onChange={(e:any) => handleInputSelectedValue(e)}/>
 </div>
 <Select defaultValue={"cad"} currencySecondConverter={currencySecondConverter}/>
      </div>
         </div>
   </div>
-    </WrapperContainer>
+    </div>
   );
 }
 
-export default Counter;
+export default Converter;
